@@ -50,3 +50,13 @@ https://app.pagescms.org এ GitHub দিয়ে সাইন ইন করে r
 - Existing `/articles/<slug>/` paths retained.
 - All current posts are illustrative educational examples, not breaking news.
 - CMS article fields: featured, featuredOrder, trending.
+
+
+## V1.2 — Page transitions
+
+- On the first visit in a browser tab, a brief NISHAT INFO HUB logo introduction appears.
+- Internal page navigation uses a subtle transition overlay.
+- `prefers-reduced-motion` disables decorative animation.
+- No paid service or additional dependency.
+- Transition code is in `src/layouts/Base.astro`.
+- GitHub mobile upload note: GitHub's mobile browser file picker often cannot upload directory trees. Use a desktop browser with drag-and-drop, GitHub's web editor where supported, or a Git client that preserves folders. Do not flatten `src/` and `public/` into the repository root.
