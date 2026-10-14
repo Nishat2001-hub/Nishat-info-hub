@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 
@@ -63,4 +64,16 @@ test('save desktop, mobile and dark previews', async ({ page }) => {
   await page.locator('#theme-toggle').click();
   await page.setViewportSize({width:375,height:812});
   await page.screenshot({path:'preview/home-mobile.png',fullPage:true});
+});
+
+test('homepage and article meet automated accessibility checks in both themes', async ({ page }) => {
+  await page.emulateMedia({reducedMotion:'reduce'});
+  for (const route of ['/', '/articles/job-circular-guide/']) {
+    await page.goto(route);
+    for (const dark of [false, true]) {
+      await page.evaluate(value => document.documentElement.classList.toggle('dark', value), dark);
+      const results = await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      expect(results.violations).toEqual([]);
+    }
+  }
 });

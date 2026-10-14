@@ -1,4 +1,4 @@
 ---
-import Base from '../../layouts/Base.astro';import {categories,icons} from '../../data/categories';
+import Base from '../../layouts/Base.astro';import CategoryIcon from '../../components/CategoryIcon.astro';import {categories} from '../../data/categories';
 ---
-<Base title="বিভাগসমূহ | NISHAT INFO HUB"><div class="max-w-6xl mx-auto px-4 py-12"><h1 class="text-3xl font-bold text-navy mb-8">বিভাগসমূহ</h1><div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">{categories.map((c,i)=><a class="bg-white border rounded-2xl p-7 hover:shadow-lg" href={'/articles/?category='+encodeURIComponent(c)}><div class="text-4xl mb-4">{icons[i]}</div><strong class="text-navy">{c}</strong><p class="text-cyan text-sm mt-2">লেখাগুলো দেখুন →</p></a>)}</div></div></Base>
+<Base title="বিভাগসমূহ | NISHAT INFO HUB"><div class="max-w-6xl mx-auto px-4 py-12"><h1 class="text-3xl font-bold text-navy mb-8">বিভাগসমূহ</h1><div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">{categories.map(c=><a class="bg-white border rounded-2xl p-7 hover:shadow-lg" href={'/articles/?category='+encodeURIComponent(c)}><CategoryIcon category={c} class="h-10 w-10 mb-4 text-cyan"/><strong class="text-navy">{c}</strong><p class="text-cyan text-sm mt-2">লেখাগুলো দেখুন →</p></a>)}</div></div></Base>
