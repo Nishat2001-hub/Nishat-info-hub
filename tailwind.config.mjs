@@ -1,1 +1,2 @@
-export default {content:['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],theme:{extend:{fontFamily:{sans:['Hind Siliguri','sans-serif']},colors:{navy:'#10243b',cyan:'#089cc6'}}},plugins:[]};
+import typography from '@tailwindcss/typography';
+export default {darkMode:'class',content:['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],theme:{extend:{fontFamily:{sans:['Hind Siliguri','sans-serif']},colors:{navy:'#10243b',cyan:'#087f9f'}}},plugins:[typography]};

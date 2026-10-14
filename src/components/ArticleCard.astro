@@ -1,0 +1,7 @@
+---
+import type { Article } from '../lib/articles';
+interface Props {article: Article}
+const {article}=Astro.props;
+const a=article.data;
+---
+<a href={'/articles/'+article.id+'/'} class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all block"><div class="h-36 bg-gradient-to-br from-navy via-slate-700 to-cyan flex items-center justify-center">{a.image ? <img src={a.image} alt="" loading="lazy" width="640" height="360" class="w-full h-full object-cover"/> : <span aria-hidden="true" class="text-5xl opacity-90">{a.category==='সরকারি চাকরি'?'💼':a.category==='কম্পিউটার সমাধান'?'💻':a.category==='AI ও প্রযুক্তি'?'✨':a.category==='চাকরির বিধিবিধান'?'⚖️':'📝'}</span>}</div><div class="p-5"><span class="text-cyan text-xs font-bold">{a.category}</span><h3 class="font-bold text-navy text-lg mt-2 leading-snug group-hover:text-cyan">{a.title}</h3><p class="text-slate-500 text-sm mt-2 line-clamp-2">{a.description}</p><span class="inline-block mt-4 text-xs text-slate-400">{a.pubDate.toLocaleDateString('bn-BD')}</span></div></a>
