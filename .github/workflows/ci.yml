@@ -10,7 +10,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
+      - run: npm ci
+      - name: Record dependency audit
+        run: npm audit --json > npm-audit.json
+        continue-on-error: true
       - run: npm run check
       - run: npm run build
       - run: npm test
@@ -25,4 +28,5 @@ jobs:
             preview/
             playwright-report/
             package-lock.json
+            npm-audit.json
             dist/

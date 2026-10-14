@@ -4,7 +4,7 @@
 
 The repository main commit `105ada75d491d654463ae4d13e5a12584d903953` contained only README.md, package.json, astro.config.mjs, tailwind.config.mjs, tsconfig.json and a misplaced root content.config.ts. It had no source routes, layouts, article content, CMS configuration or public assets.
 
-The authoritative attachment is `NISHAT_INFO_HUB_V1_2_TRANSITIONS.zip`. It differs from the earlier V1.1 archive only in README.md and Base.astro. All eight original articles are restored byte for byte; their SHA-256 hashes are recorded in tests/original-content.json. All original routes are retained.
+The authoritative attachment is `NISHAT_INFO_HUB_V1_2_TRANSITIONS.zip`. It differs from the earlier V1.1 archive only in README.md and Base.astro. All eight original articles are restored byte for byte; their SHA-256 hashes are recorded in tests/original-content.json. The one-time `npm run test:restoration` audit verifies these hashes; it is deliberately excluded from ongoing CI so legitimate CMS edits remain possible. All original routes are retained.
 
 ## Repairs and completion
 

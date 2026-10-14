@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root{color-scheme:light;--paper:#f5f7fa;--ink:#10243b;--muted:#64748b;--line:#e2e8f0;--accent:#087f9f}
+:root{color-scheme:light;--paper:#f5f7fa;--ink:#10243b;--muted:#64748b;--line:#e2e8f0;--accent:#076f8c}
 html.dark{color-scheme:dark;--paper:#0d1726;--ink:#e6edf7;--muted:#b4c2d5;--line:#334155;--accent:#61d3ee}
 body{background:var(--paper);color:var(--ink)}
 main{min-height:55vh}a,button,summary,input,select{touch-action:manipulation}

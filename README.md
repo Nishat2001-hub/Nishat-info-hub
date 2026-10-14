@@ -11,10 +11,13 @@ npm install
 npm run check
 npm run build
 npm test
+npm run test:publication
 npx playwright install chromium
 npm run test:browser
 npm run dev
 ```
+
+মূল ZIP-এর article অপরিবর্তিত আছে কি না দেখতে `npm run test:restoration` চালানো যায়। এটি শুধু restoration audit-এর জন্য; পরবর্তী CMS সম্পাদনার পরে hash বদলানো স্বাভাবিক, তাই নিয়মিত CI-তে এই পরীক্ষা চলে না।
 
 ব্রাউজারে `http://localhost:4321` খুলুন। Production build দেখার জন্য `npm run preview` চালান। Browser test থেকে `preview/home-desktop.png`, `preview/home-mobile.png`, `preview/home-dark.png` তৈরি হয়। GitHub Actions-এর `portal-preview-and-validation` artifact-এ preview ও build পাওয়া যাবে।
 
