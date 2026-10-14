@@ -61,3 +61,7 @@ Preview branch চালু থাকলে development branch-এর জন্�
 `src/content/articles/` মূল কনটেন্ট; `src/pages/` routes; `src/layouts/Base.astro` layout; `src/styles/global.css` styles; `.pages.yml` CMS configuration। `docs/RESTORATION-AUDIT.md`-এ restoration ও পরীক্ষা সংক্রান্ত তথ্য আছে। মূল V1.2 README `docs/V1.2-ORIGINAL-README.md`-এ সংরক্ষিত।
 
 বর্তমান লেখাগুলো মূল source-এর শিক্ষামূলক নমুনা। প্রকাশের আগে আপনার সম্পাদকীয় যাচাই এবং প্রকৃত যোগাযোগের তথ্য প্রয়োজন। কোনো analytics, বিজ্ঞাপন বা paid service যোগ করা হয়নি।
+
+## Dependency audit
+
+Build ও browser tests পাস করেছে। তবে নির্ধারিত Astro 5 / Tailwind 3 dependency-তে `npm audit` ১২টি advisory দেখায়, যার একটি critical। পূর্ণ সমাধানের জন্য npm major framework upgrade প্রস্তাব করছে; আপনার চাওয়া stack বজায় রাখা হয়েছে। এটি static build, deployed Astro server বা image-optimization endpoint নেই। বিস্তারিত `docs/RESTORATION-AUDIT.md`-এ আছে; production অনুমোদনের আগে বিষয়টি review করুন।

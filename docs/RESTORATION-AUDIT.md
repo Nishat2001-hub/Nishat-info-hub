@@ -18,6 +18,16 @@ The authoritative attachment is `NISHAT_INFO_HUB_V1_2_TRANSITIONS.zip`. It diffe
 
 ## Verification
 
-Local content-preservation and route-source checks pass. Local dependency installation initially failed because the execution sandbox cannot connect to its network proxy; `npm run build` consequently reported `astro: not found`. See the PR checks for subsequent CI validation. A successful source check alone does not establish a successful production build.
+Local one-time content preservation and route-source checks passed. GitHub Actions completed npm install, npm ci, Astro/TypeScript checks (0 errors, 0 warnings), a 17-page production build, internal link/asset/metadata tests, draft/future publication regression tests and five Playwright tests, including automated WCAG A/AA checks on the homepage and article page in light and dark modes. Desktop, mobile, dark screenshots and built output are in the CI artifact.
+
+Validation run: https://github.com/Nishat2001-hub/Nishat-info-hub/actions/runs/38611514999
+
+The local sandbox could not connect to its network proxy, so dependency installation, build and browser validation were performed in GitHub Actions, not falsely reported as a local success.
+
+## Dependency audit limitation
+
+`npm audit` reports 12 advisories in the required Astro 5 / Tailwind 3 dependency tree (1 critical, 6 high, 4 moderate, 1 low). npm recommends a major Astro 7 / Tailwind 4 migration for the complete fix; that would change the requested stack. The full JSON report is included in CI artifacts. The audit step records these findings and is non-blocking; a green build does not mean the dependency audit is clean.
+
+This project builds static HTML, has no deployed Astro server, server islands, SSR authorization or image-optimization endpoint, and displays uploads as ordinary images. These boundaries limit exposure but do not amount to a blanket assurance that all advisories are inapplicable. Keep the development server private, review advisories before production approval, and plan a supported framework upgrade separately. No forced major upgrade has been made.
 
 No production deployment, merge or content deletion is part of this change. Contact details remain unset until supplied by the owner. Static future-dated publication requires a rebuild after the date arrives.
