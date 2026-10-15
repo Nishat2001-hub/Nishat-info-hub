@@ -1,0 +1,35 @@
+media:
+  input: public/uploads
+  output: /uploads
+content:
+  - name: articles
+    label: আর্টিকেল
+    type: collection
+    path: src/content/articles
+    format: yaml-frontmatter
+    extension: md
+    view:
+      fields: [title, category, pubDate, draft]
+      primary: title
+    fields:
+      - {name: title, label: শিরোনাম, type: string, required: true}
+      - {name: description, label: সংক্ষিপ্ত বিবরণ, type: text, required: true}
+      - {name: category, label: বিভাগ, type: select, required: true, options: {values: [সরকারি চাকরি, দাপ্তরিক চিঠিপত্র, চাকরির বিধিবিধান, কম্পিউটার সমাধান, AI ও প্রযুক্তি, বাংলাদেশ আপডেট, টিউটোরিয়াল, ফ্রি রিসোর্স]}}
+      - {name: pubDate, label: প্রকাশের তারিখ, type: date, required: true}
+      - {name: updatedDate, label: হালনাগাদ, type: date}
+      - {name: draft, label: খসড়া, type: boolean, default: true}
+      - {name: featured, label: প্রধান খবর, type: boolean, default: false}
+      - {name: featuredOrder, label: প্রধান খবরের ক্রম (ছোট সংখ্যা আগে), type: number, default: 100, options: {min: 0, step: 1}}
+      - {name: trending, label: আলোচিত বিষয়, type: boolean, default: false}
+      - {name: image, label: ছবি, type: image}
+      - {name: sourceUrl, label: মূল উৎসের লিংক, type: string}
+      - {name: applyUrl, label: আবেদন লিংক, type: string}
+      - {name: body, label: বিস্তারিত, type: rich-text}
+  - name: settings
+    label: সাইটের যোগাযোগ
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - {name: contactEmail, label: যোগাযোগের ইমেইল, type: string}
+      - {name: facebookUrl, label: Facebook পেজের পূর্ণ HTTPS লিংক, type: string}
