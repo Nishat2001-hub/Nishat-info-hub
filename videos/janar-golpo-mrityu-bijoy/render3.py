@@ -345,7 +345,7 @@ def build_caps(cbase=None):
         if cur:lis.append(cur)
         lh=86;wmax=0;wlis=[]
         for l in lis:wmax=max(wmax,sum(tw(w,('sans7',58),('lat7',58)) for w in l)+sp*(len(l)-1))
-        Hh=len(lis)*lh;y0=int((cbase[len(CP)] if cbase else 1310)-Hh/2)
+        Hh=len(lis)*lh;y0=int((cbase[len(CP)] if cbase else 1235)-Hh/2)
         for li,l in enumerate(lis):
             tot=sum(tw(w,('sans7',58),('lat7',58)) for w in l)+sp*(len(l)-1);x=(OW-tot)/2
             for w in l:
@@ -450,32 +450,32 @@ def ov_list(items,title=None):
         return ('items',rows,rows2,1)
     return ('items',rows,[r[1] for r in rows],0)
 def ov_card(ar,ref,sub,narr=None,chip=None,chipcol=GRN):
-    im=canvas();y=330
+    im=canvas();y=300
     if chip:
-        ch,cw=shape_line(chip,38,CREAM,3,BRW)
-        total=cw+70
-        cpill=Image.new('RGBA',(total,72),(0,0,0,0));cd=ImageDraw.Draw(cpill)
-        cd.rounded_rectangle([0,0,total,72],36,fill=chipcol+(240,))
-        cpill.alpha_composite(ch,(35,(72-ch.height)//2))
-        im.alpha_composite(cpill,((OW-total)//2,y));y+=108
+        ch,cw=shape_line(chip,34,CREAM,3,BRW)
+        total=cw+64
+        cpill=Image.new('RGBA',(total,64),(0,0,0,0));cd=ImageDraw.Draw(cpill)
+        cd.rounded_rectangle([0,0,total,64],32,fill=chipcol+(240,))
+        cpill.alpha_composite(ch,(32,(64-ch.height)//2))
+        im.alpha_composite(cpill,((OW-total)//2,y));y+=96
     if narr:
-        ni,_=shape_line(narr,44,(216,208,194,235),4,BRW)
-        im.alpha_composite(ni,((OW-ni.width)//2,y));y+=ni.height+28
+        ni,_=shape_line(narr,40,(216,208,194,235),4,BRW)
+        im.alpha_composite(ni,((OW-ni.width)//2,y));y+=ni.height+24
     if ar:
         for at in ar:
-            ai=arabic.arab_img(at,84,GOLD)
-            if ai.width>880:ai=ai.resize((880,int(ai.height*880/ai.width)),Image.LANCZOS)
-            im.alpha_composite(ai,((OW-ai.width)//2,y));y+=ai.height+20
-        d=ImageDraw.Draw(im);d.line([(OW/2-170,y+6),(OW/2+170,y+6)],fill=(255,201,60,170),width=5);y+=46
-    subs=wraplines(sub,54,780)
+            ai=arabic.arab_img(at,76,GOLD)
+            if ai.width>800:ai=ai.resize((800,int(ai.height*800/ai.width)),Image.LANCZOS)
+            im.alpha_composite(ai,((OW-ai.width)//2,y));y+=ai.height+18
+        d=ImageDraw.Draw(im);d.line([(OW/2-150,y+6),(OW/2+150,y+6)],fill=(255,201,60,170),width=5);y+=38
+    subs=wraplines(sub,48,800)
     for ln in subs:
-        si,_=shape_line(ln,52,CREAM,5,BRW)
-        im.alpha_composite(si,((OW-si.width)//2,y));y+=si.height+16
-    y+=20
+        si,_=shape_line(ln,46,CREAM,5,BRW)
+        im.alpha_composite(si,((OW-si.width)//2,y));y+=si.height+12
+    y+=16
     if ref:
-        ri,_=shape_line(ref,42,GOLD,4,BRW)
+        ri,_=shape_line(ref,38,GOLD,4,BRW)
         im.alpha_composite(ri,((OW-ri.width)//2,y));y+=ri.height
-    y0=300;y1=min(y+44,1520)
+    y0=260;y1=min(y+40,1300)
     panel=Image.new('RGBA',(OW,y1-y0),(0,0,0,0));pd=ImageDraw.Draw(panel)
     pd.rounded_rectangle([44,0,OW-44,y1-y0],40,fill=(15,19,33,222),outline=(255,214,130,140),width=6)
     fr=canvas();fr.alpha_composite(panel,(0,y0))
@@ -642,9 +642,9 @@ SC=[(s[0],s[1],s[2],s[3],s[4]) for s in SC]
 OV=[ov_for(kd,kw) for _,_,_,kd,kw in SC]
 cbase=[]
 for a,b,t in cues:
-    tm=(a+b)/2;kb=1310
+    tm=(a+b)/2;kb=1235
     for (t0,t1,bg_,kd,kw) in SC:
-        if tm<t1:kb=1430 if kd=='card' else 1310;break
+        if tm<t1:kb=1310 if kd=='card' else 1235;break
     cbase.append(kb)
 CAP=build_caps(cbase)
 FTAG=canvas();tim,_=shape_line('জানার গল্প',40,(245,240,228,225),4,BRW)
