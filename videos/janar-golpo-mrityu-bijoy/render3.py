@@ -345,7 +345,7 @@ def build_caps(cbase=None):
         if cur:lis.append(cur)
         lh=86;wmax=0;wlis=[]
         for l in lis:wmax=max(wmax,sum(tw(w,('sans7',58),('lat7',58)) for w in l)+sp*(len(l)-1))
-        Hh=len(lis)*lh;y0=int((cbase[len(CP)] if cbase else 1380)-Hh/2)
+        Hh=len(lis)*lh;y0=int((cbase[len(CP)] if cbase else 1310)-Hh/2)
         for li,l in enumerate(lis):
             tot=sum(tw(w,('sans7',58),('lat7',58)) for w in l)+sp*(len(l)-1);x=(OW-tot)/2
             for w in l:
@@ -526,23 +526,23 @@ def ov_end():
     return ('pop',im,0,-14)
 CPW='7'
 def ov_note(lines):
-    pw=860;szh=150+len(lines)*104
+    pw=860;szh=182+len(lines)*110
     shad=Image.new('RGBA',(pw+84,szh+70),(0,0,0,0))
     sd=ImageDraw.Draw(shad);sd.rounded_rectangle([62,54,40+pw+22,52+szh+22],12,fill=(8,7,10,170))
     paper=Image.new('RGBA',(pw+60,szh+40),(0,0,0,0));pd=ImageDraw.Draw(paper)
     pd.rounded_rectangle([30,20,30+pw,20+szh],10,fill=PAP+(255,),outline=(150,110,60,255),width=3)
     for yy in range(20+128,20+szh-30,104):pd.line([(52,yy),(30+pw-22,yy)],fill=(110,150,180,110),width=2)
     pd.line([(30+int(pw*.15),20),(30+int(pw*.15),20+szh)],fill=(211,47,47,230),width=5)
-    yb=20+58
+    yb=20+72
     for li,l in enumerate(lines):
         tim,_=shape_line(l,52,BRW,2,None)
         paper.alpha_composite(tim,(30+int((pw-tim.width)/2)+6,yb))
-        yb+=104
+        yb+=110
     pimg=shad.copy();pimg.alpha_composite(paper,(8,8));pimg=pimg.rotate(3,expand=True,resample=Image.BICUBIC)
     im=canvas()
     ytop=int(560-pimg.height/2)
     im.alpha_composite(pimg,((OW-pimg.width)//2,ytop))
-    return ('wipe',im,ytop,1.1)
+    return ('wipe',im,ytop,0.7)
 def ov_list(items,title=None):
     im=canvas()
     if title:
@@ -642,9 +642,9 @@ SC=[(s[0],s[1],s[2],s[3],s[4]) for s in SC]
 OV=[ov_for(kd,kw) for _,_,_,kd,kw in SC]
 cbase=[]
 for a,b,t in cues:
-    tm=(a+b)/2;kb=1380
+    tm=(a+b)/2;kb=1310
     for (t0,t1,bg_,kd,kw) in SC:
-        if tm<t1:kb=1508 if kd=='card' else 1380;break
+        if tm<t1:kb=1430 if kd=='card' else 1310;break
     cbase.append(kb)
 CAP=build_caps(cbase)
 FTAG=canvas();tim,_=shape_line('জানার গল্প',40,(245,240,228,225),4,BRW)
